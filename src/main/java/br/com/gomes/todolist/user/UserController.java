@@ -28,6 +28,6 @@ public class UserController {
         var passwordHashred =  BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());
         userModel.setPassword(passwordHashred);
         var userCreated = repository.save(userModel);
-        return ResponseEntity.ok(userCreated);
+        return ResponseEntity.status(HttpStatus.OK).body(userCreated);
     }
 }
